@@ -1,0 +1,42 @@
+# Simple Python Quiz Game
+
+# Questions and answers stored as a dictionary
+quiz_data = {
+    "What is the capital of France?": ["A. Berlin", "B. Madrid", "C. Paris", "D. Rome", "C"],
+    "Which language is known as the 'mother of all languages'?": ["A. Latin", "B. Sanskrit", "C. Greek", "D. Arabic", "B"],
+    "Who developed Python?": ["A. James Gosling", "B. Guido van Rossum", "C. Dennis Ritchie", "D. Bjarne Stroustrup", "B"],
+    "Which planet is known as the Red Planet?": ["A. Venus", "B. Mars", "C. Jupiter", "D. Saturn", "B"],
+    "What is 5 + 3 * 2?": ["A. 16", "B. 11", "C. 13", "D. 10", "B"]
+}
+
+score = 0
+
+print("Welcome to the Quiz Game!")
+print("Answer the following multiple-choice questions:\n")
+
+# Loop through quiz questions
+for question, options in quiz_data.items():
+    print(question)
+    for option in options[:-1]:  # Print options (excluding the last item, which is the correct answer)
+        print(option)
+    
+    # Get user input
+    answer = input("Enter your choice (A/B/C/D): ").upper()
+    
+    # Check the answer
+    if answer == options[-1]:  # Last item in the list is the correct answer
+        print("✅ Correct!\n")
+        score += 1
+    else:
+        print(f"❌ Wrong! The correct answer was {options[-1]}.\n")
+
+# Display the final score
+print(f"Quiz Over! Your final score is {score}/{len(quiz_data)}.")
+
+# Provide feedback based on performance
+if score == len(quiz_data):
+    print("🎉 Excellent! You got all questions correct!")
+elif score >= len(quiz_data) // 2:
+    print("👍 Good job! You got more than half correct.")
+else:
+    print("😔 Better luck next time! Keep learning.")
